@@ -1,5 +1,6 @@
 class Train
   include Producer
+  include InstanceCounter
   attr_accessor :speed
   attr_reader :current_station, :route, :number, :type, :wagons
 
@@ -11,6 +12,7 @@ class Train
     @speed = 0
     @wagons = []
     @@trains << self
+    register_instance
   end
 
 #В классе Train создать метод класса find, который принимает номер поезда 
@@ -113,3 +115,5 @@ protected # потому что их не нужно вызывать вне к�
   end
 end
  
+train1 = Train.new(123, "Passenger")
+train2 = Train.new(234, "Cargo")
