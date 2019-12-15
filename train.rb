@@ -115,5 +115,5 @@ protected # потому что их не нужно вызывать вне к�
   end
 end
  
-train1 = Train.new(123, "Passenger")
-train2 = Train.new(234, "Cargo")
+# train1 = Train.new(123, "Passenger")
+# train2 = Train.new(234, "Cargo")
