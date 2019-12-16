@@ -5,6 +5,7 @@ class Train
   attr_reader :current_station, :route, :number, :type, :wagons
 
   @@trains = []
+  @@trains_hash = {}
 
   def initialize(number, type)
     @number = number
@@ -12,19 +13,17 @@ class Train
     @speed = 0
     @wagons = []
     @@trains << self
+    @@trains_hash[number] = self
     register_instance
   end
 
 #В классе Train создать метод класса find, который принимает номер поезда 
 # (указанный при его создании) и возвращает объект поезда по номеру или nil, 
 # если поезд с таким номером не найден.
-  def self.find(number) # вызывать так: Train.find(123)
-    train = nil
-    @@trains.each do |tr|
-      train = tr if tr.number == number
-    end
-    puts train
-  end 
+
+  def self.find(number)
+      puts @@trains_hash[number]
+  end
 
   def go(speed)
     @speed += speed
@@ -115,5 +114,4 @@ protected # потому что их не нужно вызывать вне к�
   end
 end
  
-# train1 = Train.new(123, "Passenger")
-# train2 = Train.new(234, "Cargo")
+
